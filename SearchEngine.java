@@ -19,7 +19,7 @@ class Handler implements URLHandler {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     list.add(parameters[1]);
-                    return String.format("%s was added to the search engine!", parameters[1]);
+                    return String.format("%s was added to the search engine!", parameters[1]) + "\n" + list.toString();
                 }
             }
         } 
