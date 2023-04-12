@@ -11,7 +11,7 @@ class Handler implements URLHandler {
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return "Jason and George's Search Engine";
+            return "Jason and George's Search Engine" + "\n" + "Search Engine:" + "\n" + list.toString();
         } 
         else if (url.getPath().equals("/add")) {
 
@@ -19,7 +19,7 @@ class Handler implements URLHandler {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     list.add(parameters[1]);
-                    return String.format("%s was added to the search engine!", parameters[1]) + "\n" + list.toString();
+                    return String.format("%s was added to the search engine!", parameters[1]);
                 }
             }
         } 
@@ -35,8 +35,9 @@ class Handler implements URLHandler {
                             list2.add(list.get(i));
                             retS = retS + list.get(i) + "\n";
                         }
-                    return retS;
+
                     }
+                    return retS;
                 }
             }
 
