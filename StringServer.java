@@ -11,7 +11,7 @@ class Handler implements URLHandler {
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return list.toListS();
+            return toListS();
         } 
         else if (url.getPath().equals("/add-message")) {
 
@@ -19,7 +19,7 @@ class Handler implements URLHandler {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     list.add(parameters[1]);
-                    return list.toListS();
+                    return toListS();
                 }
             }
         } 
