@@ -45,6 +45,14 @@ class Handler implements URLHandler {
         }
         return "404 Not Found!";
     }
+
+    public String tolistS() {
+        String ret = "";
+        for (int i = 0; i < list.size(); i++) {
+            ret = ret + list.get(i) + "\n";
+        }
+        return ret;
+    }
 }
 
 class StringServer {
