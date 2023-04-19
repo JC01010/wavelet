@@ -11,7 +11,7 @@ class Handler implements URLHandler {
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return list.toString();
+            return list.toListS();
         } 
         else if (url.getPath().equals("/add-message")) {
 
@@ -19,34 +19,15 @@ class Handler implements URLHandler {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     list.add(parameters[1]);
-                    return list.toString();
+                    return list.toListS();
                 }
             }
         } 
-        else {
-            System.out.println("Path: " + url.getPath());
-            if (url.getPath().contains("/search")) {
-                List <String> list2 = new ArrayList<String>();
-                String retS = "";
-                String[] parameters = url.getQuery().split("=");
-                if (parameters[0].equals("s")) {
-                    for (int i = 0; i < list.size(); i++) {
-                        if (list.get(i).indexOf(parameters[1])>=0) {
-                            list2.add(list.get(i));
-                            retS = retS + list.get(i) + "\n";
-                        }
-
-                    }
-                    return retS;
-                }
-            }
-
-            
-        }
+        
         return "404 Not Found!";
     }
 
-    public String tolistS() {
+    public String toListS() {
         String ret = "";
         for (int i = 0; i < list.size(); i++) {
             ret = ret + list.get(i) + "\n";
