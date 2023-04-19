@@ -11,15 +11,15 @@ class Handler implements URLHandler {
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
-            return "Jason and George's Search Engine" + "\n" + "Search Engine:" + "\n" + list.toString();
+            return list.toString();
         } 
-        else if (url.getPath().equals("/add")) {
+        else if (url.getPath().equals("/add-message")) {
 
-            if (url.getPath().contains("/add")) {
+            if (url.getPath().contains("/add-message")) {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     list.add(parameters[1]);
-                    return String.format("%s was added to the search engine!", parameters[1]);
+                    return list.toString();
                 }
             }
         } 
