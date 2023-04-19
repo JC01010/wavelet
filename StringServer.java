@@ -13,15 +13,35 @@ class Handler implements URLHandler {
         if (url.getPath().equals("/")) {
             return "Jason and George's Search Engine" + "\n" + "Search Engine:" + "\n" + list.toString();
         } 
-        else (url.getPath().equals("/add-message")) {
+        else if (url.getPath().equals("/add")) {
 
-            if (url.getPath().contains("/add-message")) {
+            if (url.getPath().contains("/add")) {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
                     list.add(parameters[1]);
-                    return list.toString();
+                    return String.format("%s was added to the search engine!", parameters[1]);
                 }
             }
+        } 
+        else {
+            System.out.println("Path: " + url.getPath());
+            if (url.getPath().contains("/search")) {
+                List <String> list2 = new ArrayList<String>();
+                String retS = "";
+                String[] parameters = url.getQuery().split("=");
+                if (parameters[0].equals("s")) {
+                    for (int i = 0; i < list.size(); i++) {
+                        if (list.get(i).indexOf(parameters[1])>=0) {
+                            list2.add(list.get(i));
+                            retS = retS + list.get(i) + "\n";
+                        }
+
+                    }
+                    return retS;
+                }
+            }
+
+            
         }
         return "404 Not Found!";
     }
